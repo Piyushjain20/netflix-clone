@@ -1,0 +1,21 @@
+.row {
+  color: white;
+  width: 100dvw;
+  overflow: hidden;
+  user-select: none;
+}
+.row__title {
+  font-size: 1.5rem;
+  margin: 0;
+  padding-left: 4%;
+  margin-bottom: 20px;
+}
+/* .row__posters {
+  display: flex;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  padding: 20px 0px;
+}
+.row__poster {
+  max-height: 100px;
+} */

@@ -1,0 +1,17 @@
+.slider {
+  padding: 0 4%;
+  position: relative;
+  margin-bottom: 20px;
+  /* overflow: hidden; */
+}
+.slider-content {
+  white-space: nowrap;
+}
+.slider:hover .slider-control,
+.slider:active .slider-control {
+  background-color: rgba(20, 20, 20, 0.7);
+}
+.slider:hover .slider-control-arrow,
+.slider:active .slider-control-arrow {
+  display: block;
+}
