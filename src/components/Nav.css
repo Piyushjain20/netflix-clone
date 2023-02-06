@@ -41,7 +41,7 @@
 }
 .nav__link {
   text-decoration: none;
-  font-size: 1.2vw;
+  font-size: 0.7rem;
   color: #e5e5e5;
   transition: color 0.4s;
 }
@@ -50,4 +50,12 @@
 }
 .nav__link.active {
   color: white;
+}
+ul {
+  list-style-type: none;
+}
+@media screen and (max-width: 600px) {
+  .nav__links__container {
+    width: 50vw;
+  }
 }

@@ -1,3 +1,7 @@
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
+
 const firebaseConfig = {
   apiKey: "AIzaSyAb6Q31bdE1wHNFBFWxFH602qhr2Qaq10I",
   authDomain: "cloneflix-123.firebaseapp.com",
@@ -8,3 +12,9 @@ const firebaseConfig = {
 };
 
 // npm install -g firebase-tools
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const auth = getAuth(app);
+
+export { auth };
+export default db;

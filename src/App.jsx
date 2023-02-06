@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 
-import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom";
+import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route, redirect, useNavigate } from "react-router-dom";
 
 // Netflix Fonts
 import "../assets/fonts/NetflixSans-Bold.woff2";
@@ -13,19 +13,92 @@ import TvScreen from "./screens/TvScreen";
 import MovieScreen from "./screens/MovieScreen";
 import LandingPage from "./screens/LandingPage";
 import LoginScreen from "./screens/LoginScreen";
+import { useEffect } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "./firebase.js";
+import useUserStore from "./app/userStore";
+import MyListScreen from "./screens/MyListScreen.jsx";
+// import isProtected from "./components/isProtected.js";
+import ProfileScreen from "./screens/ProfileScreen";
 
 export default function App() {
-  return <RouterProvider router={router} />;
+  const { login, logout, user } = useUserStore();
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (userAuth) => {
+      if (userAuth) {
+        login({
+          uid: userAuth.uid,
+          email: userAuth.email,
+        });
+      } else {
+        logout();
+      }
+    });
+    return unsubscribe;
+  }, []);
+
+  return (
+    <RouterProvider
+      router={createBrowserRouter(
+        createRoutesFromElements(
+          <Route>
+            <Route path="/" index element={<LandingPage />} />
+            <Route path="/login" element={<LoginScreen />} />
+            <Route path="/signup" element={<LoginScreen />} />
+            <Route
+              path="/browse"
+              element={<HomeScreen />}
+              loader={async () => {
+                if (!user) {
+                  throw redirect("/login");
+                }
+                return null;
+              }}
+            />
+            <Route
+              path="/browse/my-list"
+              element={<MyListScreen />}
+              loader={async () => {
+                if (!user) {
+                  throw redirect("/login");
+                }
+                return null;
+              }}
+            />
+            <Route
+              path="/tv"
+              element={<TvScreen />}
+              loader={async () => {
+                if (!user) {
+                  throw redirect("/login");
+                }
+                return null;
+              }}
+            />
+            <Route
+              path="/movies"
+              element={<MovieScreen />}
+              loader={async () => {
+                if (!user) {
+                  throw redirect("/login");
+                }
+                return null;
+              }}
+            />
+            <Route
+              path="/profile"
+              element={<ProfileScreen />}
+              loader={async () => {
+                if (!user) {
+                  throw redirect("/login");
+                }
+                return null;
+              }}
+            />
+          </Route>
+        )
+      )}
+    />
+  );
 }
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path="/" errorElement={<h1>Error Page</h1>}>
-      <Route index element={<LandingPage />}></Route>
-      <Route path="/login" element={<LoginScreen />}></Route>
-      <Route path="/signup" element={<LoginScreen isSignUpPage={true} />}></Route>
-      <Route path="/browse" element={<HomeScreen />}></Route>
-      <Route path="/tv" element={<TvScreen />}></Route>
-      <Route path="/movies" element={<MovieScreen />}></Route>
-    </Route>
-  )
-);

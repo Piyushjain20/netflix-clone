@@ -29,8 +29,12 @@ const Slider = (props) => {
       setItemsInRow(6);
     } else if (window.innerWidth >= 1000) {
       setItemsInRow(5);
-    } else if (window.innerWidth < 1000) {
+    } else if (window.innerWidth >= 800) {
       setItemsInRow(4);
+    } else if (window.innerWidth > 500) {
+      setItemsInRow(3);
+    } else {
+      setItemsInRow(2);
     }
   };
 

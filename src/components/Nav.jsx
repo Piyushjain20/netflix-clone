@@ -3,10 +3,12 @@ import NetflixLogo from "../../assets/NetflixLogo.png";
 import Avatar from "../../assets/profileAvatar.png";
 import "./Nav.css";
 import { useState, useEffect } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 
 export default function Nav() {
   const [NavBlack, setNavBlack] = useState(false);
+  const navigate = useNavigate();
+
   function changeNavbar() {
     if (window.scrollY > 20) {
       setNavBlack(true);
@@ -27,19 +29,19 @@ export default function Nav() {
         </Link>
         <ul className="nav__links__container">
           <NavLink to="/browse" className="nav__link">
-            Home
+            <li>Home</li>
           </NavLink>
           <NavLink to="/tv" className="nav__link">
-            TV Shows
+            <li>TV Shows</li>
           </NavLink>
           <NavLink to="/movies" className="nav__link">
-            Movies
+            <li>Movies</li>
           </NavLink>
           <NavLink to="/browse/my-list" className="nav__link">
-            My List
+            <li>My List</li>
           </NavLink>
         </ul>
-        <img src={Avatar} alt="Profile Avatar" className="nav__avatar" />
+        <img src={Avatar} alt="Profile Avatar" className="nav__avatar" onClick={() => navigate("/profile")} />
       </div>
     </div>
   );

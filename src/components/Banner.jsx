@@ -37,7 +37,7 @@ function Banner({ fetchUrl }) {
         }}></div>
       <div className="banner__contents">
         <h1 className="banner__title">{movie?.original_title || movie?.title || movie?.name || movie?.original_name}</h1>
-        <p className="banner__description">{truncate(movie.overview, 100)}</p>
+        <p className="banner__description">{truncate(movie?.overview, 100)}</p>
         <div className="banner__buttons">
           <button className="banner__button button1">Play</button>
           <button className="banner__button button2">More Info</button>

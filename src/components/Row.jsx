@@ -14,7 +14,7 @@ export default function Row({ title, fetchUrl, isLargeRow = false }) {
     }
     fetchData();
   }, [fetchUrl]);
-  console.log(data);
+  // console.log(data);
   return (
     <div className="row">
       <h2 className="row__title">{title}</h2>

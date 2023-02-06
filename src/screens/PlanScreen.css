@@ -1,0 +1,43 @@
+.planScreen {
+  font-family: "Light";
+}
+.renewal__date {
+  margin: 0;
+  margin-bottom: 15px;
+}
+.plan__tile {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+.plan__name {
+  margin: 0;
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-family: "Medium";
+  /* border-bottom: 1px solid #282c2d; */
+}
+.plan__desc {
+  margin: 0;
+  margin-right: 20px;
+  font-size: 14px;
+  color: #808080;
+}
+.plan__btn {
+  background-color: #e50914;
+  color: white;
+  font-family: "Regular";
+  font-size: 14px;
+  border: none;
+  border-radius: 3px;
+  height: 30px;
+  cursor: pointer;
+}
+.plan__btn:hover {
+  filter: brightness(1.2);
+}
+.plan__btn:disabled {
+  background-color: #808080;
+  cursor: not-allowed;
+}

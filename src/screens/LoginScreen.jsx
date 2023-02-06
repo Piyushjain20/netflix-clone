@@ -1,27 +1,49 @@
 import React from "react";
 import "./LoginScreen.css";
 import NetflixLogo from "../../assets/NetflixLogo.png";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useRef } from "react";
 import { useEffect } from "react";
+import { auth } from "../firebase";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { useState } from "react";
 
-export default function LoginScreen({ isSignUpPage }) {
+export default function LoginScreen() {
   const email = useRef(null);
   const password = useRef(null);
+  //   Location Hook provided by react router to get state data from previous route
+  const navigate = useNavigate();
   const location = useLocation();
+  const [isSignUpPage, setIsSignUpPage] = useState(location.pathname == "/signup" ? true : false);
   useEffect(() => {
-    if (isSignUpPage) {
-      email.current.value = location.registerEmail;
+    setIsSignUpPage(location.pathname == "/signup" ? true : false);
+  }, [location.pathname]);
+  console.log(1);
+  useEffect(() => {
+    if (isSignUpPage && location.state) {
+      email.current.value = location.state.registerEmail ? location.state.registerEmail : "";
     }
   }, []);
 
   const loginUser = (e) => {
     e.preventDefault();
-    console.log(email.current.value, password.current.value);
+    signInWithEmailAndPassword(auth, email.current.value, password.current.value)
+      .then((authUser) => {
+        navigate("/profile");
+      })
+      .catch((err) => {
+        alert(err.message);
+      });
   };
   const registerUser = (e) => {
     e.preventDefault();
-    console.log(email.current.value, password.current.value);
+    createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
+      .then((authUser) => {
+        navigate("/profile");
+      })
+      .catch((err) => {
+        alert(err.message);
+      });
   };
   return (
     <div className="login-screen">
@@ -31,14 +53,17 @@ export default function LoginScreen({ isSignUpPage }) {
           <img src={NetflixLogo} alt="Netflix Logo" className="netflix-logo" />
         </Link>
       </div>
-      <form className="signIn-form" onSubmit={isSignUpPage ? loginUser : registerUser}>
+      <form className="signIn-form" onSubmit={isSignUpPage ? registerUser : loginUser}>
         <h1>{isSignUpPage ? "Sign Up" : "Sign In"}</h1>
         <input ref={email} type="email" placeholder="Email" autoComplete="email" />
         <input ref={password} type="password" placeholder="Password" autoComplete="password" minLength={4} maxLength={60} />
         <button className="signIn-btn">{isSignUpPage ? "Sign Up" : "Sign In"}</button>
         {!isSignUpPage && (
           <p>
-            <span className="greyed-text">New to NetFlix?</span> <span className="signup-text">Sign up now</span>
+            <span className="greyed-text">New to NetFlix? </span>
+            <Link to="/signup">
+              <span className="signup-text">Sign up now</span>
+            </Link>
           </p>
         )}
         <p className="greyed-text small">This page is protected by Google reCAPTCHA to ensure you're not a bot.</p>

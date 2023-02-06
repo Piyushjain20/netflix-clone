@@ -1,11 +1,10 @@
 import React from "react";
-import { Link, redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./LandingPage.css";
 import NetflixLogo from "../../assets/NetflixLogo.png";
 import TvPhoto from "../../assets/tv.png";
 import tvVideo from "../../assets/tvVideo.mp4";
 import { useRef } from "react";
-import LoginScreen from "./LoginScreen";
 import { useState } from "react";
 
 export default function LandingPage() {
@@ -30,7 +29,7 @@ export default function LandingPage() {
           <p>Ready to watch? Enter your email to create or restart your membership.</p>
           <form className="hero-form">
             <input ref={email} type="email" placeholder="Email address" required autoComplete="email" onChange={handleChange} />
-            <Link to={{ pathname: "/signup", registerEmail: registerEmail }}>
+            <Link to="/signup" state={{ registerEmail: registerEmail }}>
               <button>Get Started</button>
             </Link>
           </form>
