@@ -63,9 +63,9 @@ export default function PlanScreen({ user }) {
   // const renewal__date = new Date(subscription?.validTill).toDateString();
   return (
     <div className="planScreen">
-      {subscription && <p className="renewal__date">Renewal date: {new Date(subscription.validTill * 1000).toLocaleDateString()}</p>}
+      {subscription && <p className="renewal__date">Renewal date: {new Date(subscription?.validTill * 1000).toLocaleDateString()}</p>}
       {Object.entries(products).map(([productId, productData]) => {
-        const isCurrentPlan = productData.name.includes(subscription.selectedPlan);
+        const isCurrentPlan = productData.name.includes(subscription?.selectedPlan);
 
         return (
           <div className="plan__tile" key={productId}>
