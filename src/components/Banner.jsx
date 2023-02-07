@@ -17,7 +17,11 @@ function Banner({ fetchUrl }) {
       //   const backDropVideos = videosRequest.data.results.filter((videoObj) => videoObj.site === "YouTube" && videoObj.type === "Trailer");
       //   console.log("https://www.youtube.com/watch?v=" + backDropVideos[0].key);
       //   setBannerLink("https://www.youtube.com/embed/" + backDropVideos[0].key);
-      setMovie(movieData);
+      if (movieData?.backdrop_path) {
+        setMovie(movieData);
+      } else {
+        fetchBannerData();
+      }
     }
     fetchBannerData();
   }, []);
