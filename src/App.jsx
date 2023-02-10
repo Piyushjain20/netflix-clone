@@ -20,6 +20,7 @@ import useUserStore from "./app/userStore";
 import MyListScreen from "./screens/MyListScreen.jsx";
 // import isProtected from "./components/isProtected.js";
 import ProfileScreen from "./screens/ProfileScreen";
+import SignUpScreen from "./screens/SignUpScreen";
 
 export default function App() {
   const { login, logout, user } = useUserStore();
@@ -45,7 +46,7 @@ export default function App() {
           <Route>
             <Route path="/" index element={<LandingPage />} />
             <Route path="/login" element={<LoginScreen />} />
-            <Route path="/signup" element={<LoginScreen />} />
+            <Route path="/signup" element={<SignUpScreen />} />
             <Route
               path="/browse"
               element={<HomeScreen />}
