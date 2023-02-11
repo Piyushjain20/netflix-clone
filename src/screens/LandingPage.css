@@ -34,6 +34,7 @@
 }
 .landing-page .nav-header {
   position: absolute;
+  top: 0;
   width: 100%;
   height: 100px;
   display: flex;

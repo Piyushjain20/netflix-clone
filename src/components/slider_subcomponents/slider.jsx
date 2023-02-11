@@ -97,7 +97,6 @@ const Slider = (props) => {
 
     return sliderContents;
   };
-
   const handlePrev = () => {
     // get the new lowest visible index
     let newIndex;

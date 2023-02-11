@@ -21,6 +21,7 @@ import MyListScreen from "./screens/MyListScreen.jsx";
 // import isProtected from "./components/isProtected.js";
 import ProfileScreen from "./screens/ProfileScreen";
 import SignUpScreen from "./screens/SignUpScreen";
+import ModalScreen from "./screens/ModalScreen";
 
 export default function App() {
   const { login, logout, user } = useUserStore();

@@ -3,10 +3,14 @@ import Nav from "../components/Nav.jsx";
 import Banner from "../components/Banner.jsx";
 import requests from "../request";
 import Row from "../components/Row.jsx";
+import useModalStore from "../app/modalStore.js";
+import ModalScreen from "./ModalScreen.jsx";
 
 export default function HomeScreen() {
+  const modalElement = useModalStore((state) => state.modalElement);
   return (
     <>
+      {modalElement && modalElement}
       <Nav />
       <Banner fetchUrl={requests.fetchPopularMovies} />
       <Row title="Netflix Originals" fetchUrl={requests.fetchNetflixOriginalsMovies} isLargeRow={true} />
