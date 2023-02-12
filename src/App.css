@@ -25,4 +25,5 @@ body {
   font-family: "Regular";
   background-color: #111;
   color: white;
+  position: relative;
 }

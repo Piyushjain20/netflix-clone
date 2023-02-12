@@ -22,6 +22,20 @@ export default function ModalScreen({ movie }) {
             backgroundImage: `url("https://image.tmdb.org/t/p/original${movie?.backdrop_path}")`,
             backgroundPosition: "50% 50%",
           }}></div>
+        <div
+          className="banner__image"
+          style={{
+            backgroundSize: "cover",
+            backgroundImage: `url("https://image.tmdb.org/t/p/original${movie?.backdrop_path}")`,
+            backgroundPosition: "50% 50%",
+          }}></div>
+        <div
+          className="banner__image"
+          style={{
+            backgroundSize: "cover",
+            backgroundImage: `url("https://image.tmdb.org/t/p/original${movie?.backdrop_path}")`,
+            backgroundPosition: "50% 50%",
+          }}></div>
       </div>
     </div>
   );

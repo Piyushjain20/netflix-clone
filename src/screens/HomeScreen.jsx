@@ -10,17 +10,19 @@ export default function HomeScreen() {
   const modalElement = useModalStore((state) => state.modalElement);
   return (
     <>
-      {modalElement && modalElement}
-      <Nav />
-      <Banner fetchUrl={requests.fetchPopularMovies} />
-      <Row title="Netflix Originals" fetchUrl={requests.fetchNetflixOriginalsMovies} isLargeRow={true} />
-      <Row title="Trending" fetchUrl={requests.fetchTrendingMovies} />
-      <Row title="Top Rated" fetchUrl={requests.fetchTopRatedMovies} />
-      <Row title="Comedy" fetchUrl={requests.fetchActionMovies} />
-      <Row title="Romance" fetchUrl={requests.fetchRomanceMovies} />
-      <Row title="Horror" fetchUrl={requests.fetchHorrorMovies} />
-      <Row title="Action" fetchUrl={requests.fetchComedyMovies} />
-      <Row title="Documentaries" fetchUrl={requests.fetchDocumentariesMovies} />
+      {modalElement}
+      <div style={{ height: "100vh", overflow: "hidden" }}>
+        <Nav />
+        <Banner fetchUrl={requests.fetchPopularMovies} />
+        <Row title="Netflix Originals" fetchUrl={requests.fetchNetflixOriginalsMovies} isLargeRow={true} />
+        <Row title="Trending" fetchUrl={requests.fetchTrendingMovies} />
+        <Row title="Top Rated" fetchUrl={requests.fetchTopRatedMovies} />
+        <Row title="Comedy" fetchUrl={requests.fetchActionMovies} />
+        <Row title="Romance" fetchUrl={requests.fetchRomanceMovies} />
+        <Row title="Horror" fetchUrl={requests.fetchHorrorMovies} />
+        <Row title="Action" fetchUrl={requests.fetchComedyMovies} />
+        <Row title="Documentaries" fetchUrl={requests.fetchDocumentariesMovies} />
+      </div>
     </>
   );
 }
