@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import BannerVideo from "../../assets/BannerVideo.mp4";
 import "./Banner.css";
 import requests from "../request";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlay, faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 
 function Banner({ fetchUrl }) {
   const [movie, setMovie] = useState([]);
@@ -43,8 +45,14 @@ function Banner({ fetchUrl }) {
         <h1 className="banner__title">{movie?.original_title || movie?.title || movie?.name || movie?.original_name}</h1>
         <p className="banner__description">{truncate(movie?.overview, 100)}</p>
         <div className="banner__buttons">
-          <button className="banner__button button1">Play</button>
-          <button className="banner__button button2">More Info</button>
+          <button className="banner__button button1">
+            <FontAwesomeIcon icon={faPlay} className="btn_icon" />
+            Play
+          </button>
+          <button className="banner__button button2">
+            <FontAwesomeIcon icon={faCircleInfo} className="btn_icon" />
+            More Info
+          </button>
         </div>
       </div>
       <div className="banner__fadeBottom"></div>

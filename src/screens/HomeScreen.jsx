@@ -8,10 +8,11 @@ import ModalScreen from "./ModalScreen.jsx";
 
 export default function HomeScreen() {
   const modalElement = useModalStore((state) => state.modalElement);
+  const modal__background__style = { height: "100vh", overflow: "hidden" };
   return (
     <>
       {modalElement}
-      <div style={{ height: "100vh", overflow: "hidden" }}>
+      <div style={modalElement && modal__background__style}>
         <Nav />
         <Banner fetchUrl={requests.fetchPopularMovies} />
         <Row title="Netflix Originals" fetchUrl={requests.fetchNetflixOriginalsMovies} isLargeRow={true} />

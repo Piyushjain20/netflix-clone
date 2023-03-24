@@ -6,7 +6,6 @@ import useModalStore from "../../app/modalStore";
 const SliderItem = ({ movie, width, isLargeRow }) => {
   const open = useModalStore((state) => state.open);
   const openModal = () => {
-    console.log(<ModalScreen movie={movie} />);
     open(<ModalScreen movie={movie} />);
   };
   return (

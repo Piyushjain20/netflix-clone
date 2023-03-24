@@ -16,3 +16,8 @@
   overflow-x: scroll;
   padding: 20px 0px;
 } */
+@media screen and (max-width: 660px) {
+  .row__title {
+    font-size: 0.75rem;
+  }
+}

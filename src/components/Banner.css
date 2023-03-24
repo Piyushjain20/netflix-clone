@@ -50,6 +50,12 @@
   border-radius: 0.2rem;
   padding: 0.5rem 2rem;
   margin-right: 1rem;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.btn_icon {
+  margin-right: 7.5px;
 }
 .banner__button:hover {
   filter: brightness(80%);
